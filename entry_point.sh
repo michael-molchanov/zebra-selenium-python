@@ -3,7 +3,14 @@
 source /opt/bin/functions.sh
 
 EXIT_CODE=0
-export GEOMETRY="$SCREEN_WIDTH""x""$SCREEN_HEIGHT""x""$SCREEN_DEPTH"
+
+echo "SCREEN_WIDTH => $SCREEN_WIDTH"
+echo "SCREEN_HEIGHT => $SCREEN_HEIGHT"
+echo "SCREEN_DEPTH => $SCREEN_DEPTH"
+
+export GEOMETRY="${SCREEN_WIDTH:-1920}""x""${SCREEN_HEIGHT:-1080}""x""${SCREEN_DEPTH:-24}"
+
+echo "GEOMETRY => $GEOMETRY"
 
 function shutdown {
   kill -s SIGTERM $NODE_PID
