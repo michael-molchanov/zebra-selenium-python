@@ -28,7 +28,7 @@ trap shutdown SIGTERM SIGINT
 sleep 10
 
 SCRIPT="$1"
-exec $SCRIPT
+exec "$SCRIPT"
 EXIT_CODE=$?
 
 shutdown
