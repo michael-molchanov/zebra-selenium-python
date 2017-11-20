@@ -28,6 +28,7 @@ trap shutdown SIGTERM SIGINT
 sleep 10
 
 SCRIPT="$1"
+echo "SCRIPT => $SCRIPT"
 if [ -f "$SCRIPT" ]
 then
   exec "$SCRIPT"
