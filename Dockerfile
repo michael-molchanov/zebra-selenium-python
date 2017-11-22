@@ -9,6 +9,7 @@ RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install software-properties-common libgconf-2-4 gettext-base python3 python3-pip python3-setuptools python3-wheel python3-dev build-essential libssl-dev libffi-dev \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
+ENV ALLURE_HOME /usr
 RUN apt-add-repository ppa:qameta/allure \
   && apt-get update \
   && apt-get install allure \
