@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source /opt/bin/functions.sh
-
 EXIT_CODE=0
 
 echo "SCREEN_WIDTH => $SCREEN_WIDTH"
@@ -21,11 +19,10 @@ if [ ! -z "$SE_OPTS" ]; then
   echo "appending selenium options: ${SE_OPTS}"
 fi
 
-SERVERNUM=$(get_server_num)
 
 rm -f /tmp/.X*lock
 
-xvfb-run -n $SERVERNUM --server-args="-screen 0 $GEOMETRY -ac +extension RANDR +extension DOUBLE-BUFFER +extension GLX +extension MIT-SHM" \
+xvfb-run -a --server-args="-screen 0 $GEOMETRY -ac +extension RANDR +extension DOUBLE-BUFFER +extension GLX +extension MIT-SHM" \
   java ${JAVA_OPTS} -jar /opt/selenium/selenium-server-standalone.jar \
   ${SE_OPTS} &
 NODE_PID=$!
@@ -34,11 +31,13 @@ trap shutdown SIGTERM SIGINT
 
 sleep 10
 
-SCRIPT="$1"
-echo "SCRIPT => $SCRIPT"
-if [ -f "$SCRIPT" ]
+FILE="$1"
+COMMAND="$@"
+echo "FILE => $FILE"
+echo "COMMAND => $COMMAND"
+if [ -f "$FILE" ]
 then
-  exec "$SCRIPT"
+  exec "$COMMAND"
 fi
 EXIT_CODE=$?
 
