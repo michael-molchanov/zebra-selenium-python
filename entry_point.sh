@@ -37,7 +37,7 @@ echo "FILE => $FILE"
 echo "COMMAND => $COMMAND"
 if [ -f "$FILE" ]
 then
-  exec "$COMMAND"
+  exec $COMMAND
 fi
 EXIT_CODE=$?
 
