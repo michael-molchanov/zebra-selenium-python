@@ -31,14 +31,9 @@ trap shutdown SIGTERM SIGINT
 
 sleep 10
 
-FILE="$1"
 COMMAND="$@"
-echo "FILE => $FILE"
 echo "COMMAND => $COMMAND"
-if [ -f "$FILE" ]
-then
-  exec $COMMAND
-fi
+exec $COMMAND
 EXIT_CODE=$?
 
 shutdown
