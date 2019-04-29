@@ -16,8 +16,8 @@ RUN apt-get update -qqy \
 
 ENV ALLURE_HOME /usr
 RUN apt-add-repository ppa:qameta/allure \
-  && apt-get update \
-  && apt-get install allure \
+  && apt-get update -qqy \
+  && apt-get -qqy --no-install-recommends install allure \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 COPY entry_point.sh /opt/bin/entry_point.sh
