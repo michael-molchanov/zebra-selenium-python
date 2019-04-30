@@ -15,10 +15,13 @@ RUN apt-get update -qqy \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 ENV ALLURE_HOME /usr
-RUN apt-add-repository ppa:qameta/allure \
-  && apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install allure \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+# See http://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/
+ENV ALLURE_VERSION 2.10.0
+RUN curl -o allure-commandline-${ALLURE_VERSION}.tgz -Ls http://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${ALLURE_VERSION}/allure-commandline-${ALLURE_VERSION}.tgz \
+  && tar -zxvf allure-commandline-${ALLURE_VERSION}.tgz -C /opt/ \
+  && ln -s /opt/allure-${ALLURE_VERSION}/bin/allure /usr/bin/allure \
+  && allure --version
+
 
 COPY entry_point.sh /opt/bin/entry_point.sh
 RUN chmod +x /opt/bin/entry_point.sh
