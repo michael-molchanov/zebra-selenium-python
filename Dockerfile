@@ -16,7 +16,7 @@ RUN apt-get update -qqy \
 
 ENV ALLURE_HOME /usr
 # See http://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/
-ENV ALLURE_VERSION 2.10.0
+ENV ALLURE_VERSION 2.12.1
 RUN curl -o allure-commandline-${ALLURE_VERSION}.tgz -Ls http://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${ALLURE_VERSION}/allure-commandline-${ALLURE_VERSION}.tgz \
   && tar -zxvf allure-commandline-${ALLURE_VERSION}.tgz -C /opt/ \
   && ln -s /opt/allure-${ALLURE_VERSION}/bin/allure /usr/bin/allure \
