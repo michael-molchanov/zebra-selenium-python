@@ -81,7 +81,6 @@ RUN curl -o allure-commandline-${ALLURE_VERSION}.tgz -Ls http://repo.maven.apach
   && ln -s /opt/allure-${ALLURE_VERSION}/bin/allure /usr/bin/allure \
   && allure --version
 
-
 COPY entry_point.sh /opt/bin/entry_point.sh
 RUN chmod +x /opt/bin/entry_point.sh
 
