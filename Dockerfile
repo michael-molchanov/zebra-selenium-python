@@ -54,7 +54,6 @@ RUN curl --fail -sSL -o goofys https://github.com/kahing/goofys/releases/downloa
   && mv goofys /usr/local/bin/ \
   && chmod +x /usr/local/bin/goofys
 
-
 # Install fd
 ENV FD_VERSION 7.3.0
 RUN curl --fail -sSL -o fd.tar.gz https://github.com/sharkdp/fd/releases/download/v${FD_VERSION}/fd-v${FD_VERSION}-x86_64-unknown-linux-gnu.tar.gz \
