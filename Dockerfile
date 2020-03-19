@@ -75,8 +75,8 @@ RUN curl --fail -sSL -o variant.tar.gz https://github.com/mumoshu/variant/releas
 
 ENV ALLURE_HOME /usr
 # See http://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/
-ENV ALLURE_VERSION 2.12.1
-RUN curl -o allure-commandline-${ALLURE_VERSION}.tgz -Ls http://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${ALLURE_VERSION}/allure-commandline-${ALLURE_VERSION}.tgz \
+ENV ALLURE_VERSION 2.13.2
+RUN curl -o allure-commandline-${ALLURE_VERSION}.tgz -Ls https://repo1.maven.org/maven2/io/qameta/allure/allure-commandline/${ALLURE_VERSION}/allure-commandline-${ALLURE_VERSION}.tgz \
   && tar -zxvf allure-commandline-${ALLURE_VERSION}.tgz -C /opt/ \
   && ln -s /opt/allure-${ALLURE_VERSION}/bin/allure /usr/bin/allure \
   && allure --version
